@@ -1,0 +1,13 @@
+.Bar {
+  border: 1px solid black;
+  position: relative;
+  min-width:100%;
+}
+.Bar > .nav {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: space-between;
+  width: 100%;
+}

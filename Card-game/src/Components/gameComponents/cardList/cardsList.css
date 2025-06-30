@@ -1,0 +1,20 @@
+.wrapper {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 600px;
+  min-height: 60vh;
+}
+.wrapper.list-2 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.wrapper.list-4 {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.wrapper.list-6 {
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}

@@ -1,0 +1,20 @@
+/* styles/global.css */
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+}
+
+.game-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f0f4f8; 
+  gap: 10px;
+}

@@ -1,0 +1,31 @@
+the main Screen in the game 
+- login screen 
+- game screen 
+- Score Screen 
+-----------------------------
+the desc for the game 
+this is simple game that display the cards on the screen and 
+each card have anther card like it
+
+when the user click on the card wait for the next card and camper between them 
+if it the same card you increase the point if not flip the tow cards
+
+------------------ 
+now the Components for each Screen
+- login Screen 
+	- Login Component (filed with name and the level for the game)
+- game Screen 
+	- Component to display the (score , level, name, try , replay ,time) 
+		-- this for this component bar in the top put in it 
+		-- 
+	- Component Card have the card
+	- Component Cards list 
+- Score Screen 
+	- Component to display the (name for each player and the Score and display the )
+
+--------------------------------------- 
+think ....
+ 
+start with core for the project to keep in the head 
+and if you work with a real company this give you a power if you have a drop 
+-----------------------------------------
