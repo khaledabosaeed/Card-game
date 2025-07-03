@@ -1,5 +1,5 @@
 
-import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {  createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import NotFoundpage from './pages/notFoundpage'
 import Game from './pages/game'
@@ -24,7 +24,6 @@ function App() {
       path: '*',
       element: <NotFoundpage />
     },
-
   ])
   return (
     <>
