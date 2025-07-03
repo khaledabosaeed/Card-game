@@ -1,10 +1,41 @@
 .Card {
-  /* width: 80px;
-  height: 80px; */
   aspect-ratio: 1;
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+.Card:hover {
+  border: 2px solid black;
+}
+.flipped {
+  webkit-animation: flip-horizontal-bottom 0.4s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+}
+@-webkit-keyframes flip-horizontal-bottom {
+  0% {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+}
+@keyframes flip-horizontal-bottom {
+  0% {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
 }
