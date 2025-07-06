@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./navbar.css"
+import { GameContext } from '../../../providers/gameContext'
+
 function Navbar() {
+    const { game } = useContext(GameContext)
     return (
         <div className='Bar'>
             <ul className='nav'>
-                <li>name: </li>
-                <li>score: </li>
-                <li>level: </li>
-                <li>time: </li>
-                <li>try: </li>
+                <li>name:{game.name} </li>
+                <li>level: {Array.from({ length: game.level / 2 }).map(() => '⭐')}</li>
+                <li>try: {game.moves}</li>
+                <li>time: {game.time}s</li>
             </ul>
         </div>
     )
