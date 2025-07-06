@@ -6,5 +6,11 @@ export const cardgenertor = (level: Elevels): ICard[] => {
         return (i % 2 === 0) ? { id: i, image: "", visible: false } : { id: i - 1, image: "", visible: false }
     }).sort(() => Math.random() - .5)
     return Cards;
-}   
+}
 
+
+// 
+export const isFinshied = (card: ICard[]) => {
+        return card.every((c) => c.visible);
+  
+}
