@@ -1,25 +1,22 @@
 import "./card.css"
 import type { ICard } from '../../../types/@types'
-import { useState } from "react"
+import type { Action } from "../../../state/reducer";
 interface Iprops {
     data: ICard
+    index: number;
+    dispatch: React.Dispatch<Action>;
 }
-
-function Card({ data }: Iprops) {
-    const [visible, setvisible] = useState(data.visible)
-
+function Card({ data, dispatch, index }: Iprops) {
     return (
-        <div className={visible ? "Card flipped" : "Card"}
+        <div className={data.visible ? "Card flipped" : "Card"}
             style={{
                 backgroundImage:
-                    visible
+                    data.visible
                         ? `url(https://api.clipart.com/img/previews/icon-set-${data.id + 1}.png)`
                         : 'url(https://api.clipart.com/img/previews/icon-set-98.png)'
             }}
-            onClick={() => setvisible(!visible)}
-        >
+            onClick={() => dispatch({ type: 'flip card', playload: { id: data.id, index: index } })}>
         </div >
     )
 }
-
-export default Card
+export default Card;

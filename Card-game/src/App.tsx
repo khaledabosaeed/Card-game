@@ -1,10 +1,11 @@
 
-import {  createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import NotFoundpage from './pages/notFoundpage'
 import Game from './pages/game'
 import Login from './pages/login'
 import Score from './pages/score'
+import { GameProvider } from './providers/gameContext'
 
 function App() {
   const routes = createBrowserRouter([
@@ -26,10 +27,9 @@ function App() {
     },
   ])
   return (
-    <>
-      <RouterProvider router={routes} >
-      </RouterProvider>
-    </>
+    <GameProvider>
+      <RouterProvider router={routes} />
+    </GameProvider>
   )
 }
 

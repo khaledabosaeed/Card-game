@@ -1,5 +1,3 @@
-import React from 'react'
-// import LoginComponet from '../Components/login/LoginComponet'
 import './_pages.css'
 
 function Login() {
