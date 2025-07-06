@@ -7,3 +7,4 @@ export const cardgenertor = (level: Elevels): ICard[] => {
     }).sort(() => Math.random() - .5)
     return Cards;
 }   
+

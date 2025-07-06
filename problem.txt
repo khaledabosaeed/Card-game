@@ -1,0 +1,12 @@
+the scenario for the game 
+=> start with login screen take the name (name from here)
+=> level screen take the level (level)
+=> after this we have the game screen (cardList , name , level)
+
+the name and level is stata update 
+- so put it in reducers and use the reducer in game screen to displaying the game 
+- need context to across the name and the level 
+- 
+the problem now how assign the value to the name and the level and when 
+??
+so lets say i will create the reducer to update the value 
