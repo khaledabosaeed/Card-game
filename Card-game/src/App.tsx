@@ -6,7 +6,7 @@ import Game from './pages/game'
 import Score from './pages/score'
 import { GameProvider } from './providers/gameContext'
 import LoginComponet from './Components/login/LoginComponet'
-
+import "./App.css"
 function App() {
   const routes = createBrowserRouter([
     {

@@ -7,13 +7,20 @@ html,
   height: 100%;
   font-family: "Arial", sans-serif;
 }
+/* _pages.css */
+
 .game-screen {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center; 
+  align-items: center;
+  padding: 2rem;
   min-height: 100vh;
-  padding: 20px;
-  background-color: #f0f4f8; 
-  gap: 10px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  color: white;
+}
+
+/* Ensure spacing between sections */
+.game-screen > *:not(:last-child) {
+  margin-bottom: 1.5rem;
 }

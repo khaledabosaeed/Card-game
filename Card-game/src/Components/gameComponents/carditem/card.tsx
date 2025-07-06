@@ -8,7 +8,7 @@ interface Iprops {
 }
 function Card({ data, dispatch, index }: Iprops) {
     return (
-        <div className={data.visible ? "Card flipped" : "Card"}
+        <div className={data.visible ? "Card flipped matched " : "Card"}
             style={{
                 backgroundImage:
                     data.visible
