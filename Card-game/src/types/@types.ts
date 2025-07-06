@@ -8,3 +8,9 @@ export interface ICard {
     image: string,
     visible: boolean
 }
+export interface IScore {
+    palyerName: string
+    time: number
+    moves: number
+    level: Elevels
+}
