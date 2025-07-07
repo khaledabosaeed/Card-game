@@ -5,13 +5,13 @@ import NotFoundpage from './pages/notFoundpage'
 import Game from './pages/game'
 import Score from './pages/score'
 import { GameProvider } from './providers/gameContext'
-import LoginComponet from './Components/login/LoginComponet'
 import "./App.css"
+import Login from './pages/login'
 function App() {
   const routes = createBrowserRouter([
     {
       path: '/',
-      element: <LoginComponet />
+      element: <Login />
     },
     {
       path: '/game',

@@ -19,7 +19,7 @@ export const gameReducer = (stata: IinitialState, action: Action): IinitialState
             return { ...stata, CardsList: cards, moves: 0, initalized: true }
         }
         case 'flip card': {
-            if (stata.listOfFlipped.includes(action.playload.index)) return stata;
+            if (stata.listOfFlipped.includes(action.playload.index) || stata.listOfFlipped.length === 2) return stata;
             const flippedCards = [...stata.listOfFlipped, action.playload.index];
             let cards = stata.CardsList.map((card, i) =>
                 i === action.playload.index ? { ...card, visible: true } : card

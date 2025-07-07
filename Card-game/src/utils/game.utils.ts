@@ -8,8 +8,6 @@ export const cardgenertor = (level: Elevels): ICard[] => {
     return Cards;
 }
 
-
-// 
 export const isFinshied = (card: ICard[]) => {
         return card.every((c) => c.visible);
   

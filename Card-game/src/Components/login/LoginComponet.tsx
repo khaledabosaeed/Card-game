@@ -16,7 +16,6 @@ function LoginComponent() {
       alert('Please enter a name and select a level.');
       return;
     }
-
     setGame((old) => ({ ...old, name, level }));
     navigate('/game');
   };

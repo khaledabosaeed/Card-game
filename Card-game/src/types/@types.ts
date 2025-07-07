@@ -14,3 +14,10 @@ export interface IScore {
     moves: number
     level: Elevels
 }
+export interface IGame {
+  name: string;
+  level: Elevels;
+  finished: boolean;
+  moves: number
+  time: number;
+}

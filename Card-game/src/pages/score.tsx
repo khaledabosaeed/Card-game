@@ -11,8 +11,6 @@ function Score() {
     const [savedData, SetSavedData] = useState<IScore[]>([]);
     useEffect(() => {
         const saved = getScore();
-        console.log(saved);
-
         SetSavedData(saved);
     }, [])
     return (
@@ -28,7 +26,8 @@ function Score() {
                     </li>
                 ))}
             </ul>
-        </div>)
+        </div>
+    )
 }
 
 export default Score
