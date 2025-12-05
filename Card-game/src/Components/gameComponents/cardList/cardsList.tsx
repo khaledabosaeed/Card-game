@@ -1,18 +1,26 @@
 import Card from '../carditem/card'
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import './cardsList.css'
-import { Elevels } from '../../../types/@types'
-import { cardgenertor } from '../../../utils/game.utils';
+import { GameContext } from '../../../providers/gameContext';
+import type { Action } from '../../../state/reducer';
+import type { ICard } from '../../../types/@types';
 
-const CurrantLevel = Elevels.Hard;
-
-function CardsList() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [CardsList, SetCardsList] = useState(cardgenertor(CurrantLevel))
+interface IProps {
+    CardsList: ICard[];
+    dispatch: React.Dispatch<Action>;
+}
+function CardsList(props: IProps) {
+    const { game } = useContext(GameContext);
     return (
-        <div className={`wrapper list-${CurrantLevel}`}>
-            {CardsList.map((elm, i) => <Card data={elm} key={i} />)
-            }
+        <div className={`wrapper list-${game.level}`}>
+            {props.CardsList.map((card, index) => (
+                <Card
+                    data={card}
+                    key={`card-${index}-${card.id}`}
+                    index={index}
+                    dispatch={props.dispatch}
+                />
+            ))}
         </div >
     )
 }
