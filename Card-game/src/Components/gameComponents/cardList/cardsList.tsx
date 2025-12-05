@@ -5,16 +5,22 @@ import { GameContext } from '../../../providers/gameContext';
 import type { Action } from '../../../state/reducer';
 import type { ICard } from '../../../types/@types';
 
-interface Iprops {
+interface IProps {
     CardsList: ICard[];
     dispatch: React.Dispatch<Action>;
 }
-function CardsList(props: Iprops) {
+function CardsList(props: IProps) {
     const { game } = useContext(GameContext);
     return (
         <div className={`wrapper list-${game.level}`}>
-            {props.CardsList.map((elm, i) => <Card data={elm} key={i} index={i} dispatch={props.dispatch} />)}
-
+            {props.CardsList.map((card, index) => (
+                <Card
+                    data={card}
+                    key={`card-${index}-${card.id}`}
+                    index={index}
+                    dispatch={props.dispatch}
+                />
+            ))}
         </div >
     )
 }

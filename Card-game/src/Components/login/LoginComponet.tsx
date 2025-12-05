@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { GameContext } from '../../providers/gameContext';
-import { Elevels } from '../../types/@types';
+import { Levels } from '../../types/@types';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -9,15 +9,36 @@ function LoginComponent() {
   const navigate = useNavigate();
 
   const [name, setName] = useState('');
-  const [level, setLevel] = useState<Elevels | null>(null);
+  const [level, setLevel] = useState<Levels | null>(null);
+  const [error, setError] = useState('');
 
   const handleSubmit = () => {
-    if (!name || level === null) {
-      alert('Please enter a name and select a level.');
+    setError('');
+
+    // Validation
+    if (!name.trim()) {
+      setError('Please enter your name.');
       return;
     }
-    setGame((old) => ({ ...old, name, level }));
+
+    if (name.trim().length < 2) {
+      setError('Name must be at least 2 characters long.');
+      return;
+    }
+
+    if (level === null) {
+      setError('Please select a difficulty level.');
+      return;
+    }
+
+    setGame((old) => ({ ...old, name: name.trim(), level }));
     navigate('/game');
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
   };
 
   return (
@@ -28,29 +49,39 @@ function LoginComponent() {
         type="text"
         placeholder="Enter your name"
         onChange={(e) => setName(e.target.value)}
+        onKeyPress={handleKeyPress}
         value={name}
+        aria-label="Player name input"
       />
-      <div className="level-buttons">
+      {error && <p className="error-message">{error}</p>}
+      <div className="level-buttons" role="group" aria-label="Difficulty level">
         <button
-          className={`level-btn ${level === Elevels.Hard ? 'active' : ''}`}
-          onClick={() => setLevel(Elevels.Hard)}
+          className={`level-btn ${level === Levels.HARD ? 'active' : ''}`}
+          onClick={() => setLevel(Levels.HARD)}
+          aria-pressed={level === Levels.HARD}
         >
           Hard
         </button>
         <button
-          className={`level-btn ${level === Elevels.MEDIUM ? 'active' : ''}`}
-          onClick={() => setLevel(Elevels.MEDIUM)}
+          className={`level-btn ${level === Levels.MEDIUM ? 'active' : ''}`}
+          onClick={() => setLevel(Levels.MEDIUM)}
+          aria-pressed={level === Levels.MEDIUM}
         >
           Medium
         </button>
         <button
-          className={`level-btn ${level === Elevels.EASY ? 'active' : ''}`}
-          onClick={() => setLevel(Elevels.EASY)}
+          className={`level-btn ${level === Levels.EASY ? 'active' : ''}`}
+          onClick={() => setLevel(Levels.EASY)}
+          aria-pressed={level === Levels.EASY}
         >
           Easy
         </button>
       </div>
-      <button className="start-btn" onClick={handleSubmit}>
+      <button
+        className="start-btn"
+        onClick={handleSubmit}
+        disabled={!name.trim() || level === null}
+      >
         Start Game
       </button>
     </div>

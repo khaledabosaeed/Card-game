@@ -1,7 +1,7 @@
-export enum Elevels {
-    'Hard' = 6,
-    'MEDIUM' = 4,
-    'EASY' = 2,
+export enum Levels {
+    EASY = 2,
+    MEDIUM = 4,
+    HARD = 6,
 }
 export interface ICard {
     id: number,
@@ -9,14 +9,14 @@ export interface ICard {
     visible: boolean
 }
 export interface IScore {
-    palyerName: string
+    playerName: string
     time: number
     moves: number
-    level: Elevels
+    level: Levels
 }
 export interface IGame {
   name: string;
-  level: Elevels;
+  level: Levels;
   finished: boolean;
   moves: number
   time: number;

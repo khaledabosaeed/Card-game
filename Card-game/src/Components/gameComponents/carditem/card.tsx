@@ -1,22 +1,38 @@
 import "./card.css"
 import type { ICard } from '../../../types/@types'
 import type { Action } from "../../../state/reducer";
-interface Iprops {
+
+interface IProps {
     data: ICard
     index: number;
     dispatch: React.Dispatch<Action>;
 }
-function Card({ data, dispatch, index }: Iprops) {
+
+const EMOJI_SET = ['🎵', '🎨', '🎮', '🏆', '🎭', '🎪', '🎬', '🎤', '🎸', '🎹', '🎺', '🎻'];
+
+function Card({ data, dispatch, index }: IProps) {
+    const emoji = EMOJI_SET[data.id % EMOJI_SET.length];
+
     return (
-        <div className={data.visible ? "Card flipped matched " : "Card"}
-            style={{
-                backgroundImage:
-                    data.visible
-                        ? `url(https://api.clipart.com/img/previews/icon-set-${data.id + 1}.png)`
-                        : 'url(https://api.clipart.com/img/previews/icon-set-98.png)'
+        <div
+            className={data.visible ? "Card flipped matched" : "Card"}
+            onClick={() => dispatch({ type: 'flip card', payload: { id: data.id, index } })}
+            role="button"
+            tabIndex={0}
+            aria-label={`Card ${index + 1}`}
+            onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dispatch({ type: 'flip card', payload: { id: data.id, index } });
+                }
             }}
-            onClick={() => dispatch({ type: 'flip card', playload: { id: data.id, index: index } })}>
-        </div >
+            style={{
+                fontSize: data.visible ? '2rem' : '0',
+            }}
+        >
+            {data.visible && emoji}
+        </div>
     )
 }
+
 export default Card;

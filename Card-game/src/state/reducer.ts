@@ -1,49 +1,49 @@
-import { Elevels, type ICard } from "../types/@types";
-import { cardgenertor } from '../utils/game.utils';
+import { Levels, type ICard } from "../types/@types";
+import { cardGenerator } from '../utils/game.utils';
 
-interface IinitialState {
-    initalized: boolean;
-    CardsList: ICard[];
+interface IInitialState {
+    initialized: boolean;
+    cardsList: ICard[];
     moves: number
     listOfFlipped: number[]
     visible: boolean
 }
 export type Action =
-    | { type: 'init', playload: { level: Elevels } }
-    | { type: 'flip card', playload: { id: number, index: number } }
+    | { type: 'init', payload: { level: Levels } }
+    | { type: 'flip card', payload: { id: number, index: number } }
     | { type: "mismatch" };
-export const gameReducer = (stata: IinitialState, action: Action): IinitialState => {
+export const gameReducer = (state: IInitialState, action: Action): IInitialState => {
     switch (action.type) {
         case 'init': {
-            const cards = cardgenertor(action.playload.level);
-            return { ...stata, CardsList: cards, moves: 0, initalized: true }
+            const cards = cardGenerator(action.payload.level);
+            return { ...state, cardsList: cards, moves: 0, initialized: true }
         }
         case 'flip card': {
-            if (stata.listOfFlipped.includes(action.playload.index) || stata.listOfFlipped.length === 2) return stata;
-            const flippedCards = [...stata.listOfFlipped, action.playload.index];
-            let cards = stata.CardsList.map((card, i) =>
-                i === action.playload.index ? { ...card, visible: true } : card
+            if (state.listOfFlipped.includes(action.payload.index) || state.listOfFlipped.length === 2) return state;
+            const flippedCards = [...state.listOfFlipped, action.payload.index];
+            let cards = state.cardsList.map((card, i) =>
+                i === action.payload.index ? { ...card, visible: true } : card
             );
             if (flippedCards.length === 2) {
                 if ((cards[flippedCards[0]].id === cards[flippedCards[1]].id)) {
                     cards = cards.map((card, i) =>
                         i === flippedCards[0] || i === flippedCards[1] ? { ...card, visible: true } : card
                     );
-                    return { ...stata, listOfFlipped: [], CardsList: cards }
+                    return { ...state, listOfFlipped: [], cardsList: cards }
                 }
-                return { ...stata, listOfFlipped: flippedCards, CardsList: cards }
+                return { ...state, listOfFlipped: flippedCards, cardsList: cards }
             } else {
-                return { ...stata, listOfFlipped: flippedCards, CardsList: cards }
+                return { ...state, listOfFlipped: flippedCards, cardsList: cards }
             }
         }
         case 'mismatch': {
-            const cards = stata.CardsList.map((card, i) =>
-                stata.listOfFlipped.includes(i) ? { ...card, visible: false } : card
+            const cards = state.cardsList.map((card, i) =>
+                state.listOfFlipped.includes(i) ? { ...card, visible: false } : card
             );
-            return { ...stata, listOfFlipped: [], CardsList: cards }
+            return { ...state, listOfFlipped: [], cardsList: cards }
         }
         default: {
-            return stata
+            return state
         }
     }
 }
